@@ -12,4 +12,5 @@
 `vue create ant-design-vue-worldcup`  
 
 `$ cd ant-design-vue-worldcup`  
-`$ yarn serve`  
+`$ yarn serve`    
+`$ yarn add ant-design-vue`   
