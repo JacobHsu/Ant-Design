@@ -12,5 +12,10 @@
 `vue create ant-design-vue-worldcup`  
 
 `$ cd ant-design-vue-worldcup`  
-`$ yarn serve`    
+`$ yarn serve`  
+
+[快速上手](https://vuecomponent.github.io/ant-design-vue/docs/vue/getting-started-cn/)  
 `$ yarn add ant-design-vue`   
+
+[Button](https://vuecomponent.github.io/ant-design-vue/components/button-cn/)  
+App.vue components\HelloWorld.vue  
