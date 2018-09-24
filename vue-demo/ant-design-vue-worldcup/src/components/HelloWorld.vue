@@ -1,5 +1,6 @@
 <template>
-  <div class="hello">
+  <div class="my-3">
+    <a-button type="primary">Primary</a-button>
     <h1>{{ msg }}</h1>
   </div>
 </template>
