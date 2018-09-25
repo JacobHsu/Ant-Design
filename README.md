@@ -19,3 +19,10 @@
 
 [Button](https://vuecomponent.github.io/ant-design-vue/components/button-cn/)  
 App.vue components\HelloWorld.vue  
+
+[Bootstrap](http://getbootstrap.com/)  
+`$ yarn add bootstrap`   
+
+[Navbar](http://getbootstrap.com/docs/4.1/components/navbar/)  
+[Checkbox](https://vuecomponent.github.io/ant-design-vue/components/checkbox-cn/)  
+[Radio](https://vuecomponent.github.io/ant-design-vue/components/radio-cn/)  
