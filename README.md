@@ -26,3 +26,4 @@ App.vue components\HelloWorld.vue
 [Navbar](http://getbootstrap.com/docs/4.1/components/navbar/)  
 [Checkbox](https://vuecomponent.github.io/ant-design-vue/components/checkbox-cn/)  
 [Radio](https://vuecomponent.github.io/ant-design-vue/components/radio-cn/)  
+[Table](https://vuecomponent.github.io/ant-design-vue/components/table-cn/#components-table-demo-basic-usage)  
