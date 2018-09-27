@@ -18,13 +18,52 @@
 </template>
 
 <script>
+
+import reqwest from 'reqwest';
+
+const columns = [{
+    title: '賽事',
+    dataIndex: 'league[1]',
+}, {
+    title: '時間',
+    dataIndex: 'matchTime',
+}, {
+    title: '主隊',
+    dataIndex: 'home[1]',
+}, {
+    title: '全場比分',
+    dataIndex: 'score',
+}, {
+    title: '客隊',
+    dataIndex: 'guest[1]',
+}, {
+    title: '半場比分',
+    dataIndex: 'halfScore',
+}];
+
 export default {
   name: 'HelloWorld',
   data() {
     return {
-      data,
+      data: [],
       columns,
     }
+  },
+  mounted() {
+      this.fetch();
+  },
+  methods: {
+    fetch () {
+        this.loading = true
+        reqwest({
+            url: '/worldcup_2018.json',
+            method: 'get',
+            type: 'json',
+        }).then((data) => {
+            this.loading = false
+            this.data = data.results;
+        });
+    },
   },
   props: {
     msg: String
@@ -43,17 +82,4 @@ const data = [{
   address: '西湖区湖底公园1号'
 }];
 
-const columns = [{
-  title: '姓名',
-  dataIndex: 'name',
-  key: 'name',
-}, {
-  title: '年龄',
-  dataIndex: 'age',
-  key: 'age',
-}, {
-  title: '住址',
-  dataIndex: 'address',
-  key: 'address',
-}];
 </script>

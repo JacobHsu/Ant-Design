@@ -26,4 +26,15 @@ App.vue components\HelloWorld.vue
 [Navbar](http://getbootstrap.com/docs/4.1/components/navbar/)  
 [Checkbox](https://vuecomponent.github.io/ant-design-vue/components/checkbox-cn/)  
 [Radio](https://vuecomponent.github.io/ant-design-vue/components/radio-cn/)  
-[Table](https://vuecomponent.github.io/ant-design-vue/components/table-cn/#components-table-demo-basic-usage)  
+[Table](https://vuecomponent.github.io/ant-design-vue/components/table-cn/#components-table-demo-basic-usage) 
+
+`$ yarn add reqwest`   
+
+
+### Tools
+
+chrome [JSON Formatter](https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa/related?hl=zh-TW)  
+
+### Notes
+
+vue [Lifecycle Diagram](https://vuejs.org/v2/guide/instance.html#Lifecycle-Diagram)  
