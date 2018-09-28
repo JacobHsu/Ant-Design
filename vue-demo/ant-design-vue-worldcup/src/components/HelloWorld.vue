@@ -12,6 +12,8 @@
     </div>
     <div>
       <a-table :columns="columns" :dataSource="data" :pagination="false" size="middle">
+        <span slot="score" slot-scope="text, record">{{ record.homeScore }} - {{ record.guestScore }}</span>
+        <span slot="halfScore" slot-scope="text, record">{{ record.homeHalfScore }} - {{ record.guestHalfScore }}</span>
       </a-table>
     </div>
   </div>
@@ -33,12 +35,14 @@ const columns = [{
 }, {
     title: '全場比分',
     dataIndex: 'score',
+    scopedSlots: { customRender: 'score' },
 }, {
     title: '客隊',
     dataIndex: 'guest[1]',
 }, {
     title: '半場比分',
     dataIndex: 'halfScore',
+    scopedSlots: { customRender: 'halfScore' },
 }];
 
 export default {
@@ -70,16 +74,5 @@ export default {
   }
 }
 
-const data = [{
-  key: '1',
-  name: '胡彦斌',
-  age: 32,
-  address: '西湖区湖底公园1号'
-}, {
-  key: '2',
-  name: '胡彦祖',
-  age: 42,
-  address: '西湖区湖底公园1号'
-}];
 
 </script>
