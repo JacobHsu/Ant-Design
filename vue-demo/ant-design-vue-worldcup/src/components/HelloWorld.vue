@@ -1,8 +1,8 @@
 <template>
   <div class="my-3">
     <div class="filter mb-3">
-      <a-checkbox>顯示紅牌</a-checkbox>
-      <a-checkbox>顯示黃牌</a-checkbox>
+      <a-checkbox v-model="showRed">顯示紅牌</a-checkbox>
+      <a-checkbox v-model="showYellow">顯示黃牌</a-checkbox>
       <a-radio-group defaultValue="0" v-model="lang">
         <a-radio-button value="0">繁體</a-radio-button>
         <a-radio-button value="1">简体</a-radio-button>
@@ -13,8 +13,16 @@
     <div>
       <a-table :columns="columns" :dataSource="data" :pagination="false" size="middle">
         <span slot="league" slot-scope="league">{{ league[lang] }}</span>
-        <span slot="home" slot-scope="home, record">{{ home[lang] }}</span>
-        <span slot="guest" slot-scope="guest, record"> {{ guest[lang] }}</span>
+        <span slot="home" slot-scope="home, record">
+          <a-badge v-show="showYellow" class="mr-1" :count="record.homeYellow" :numberStyle="{borderRadius:0, backgroundColor: 'yellow', color: '#999', boxShadow: '0 0 0 1px #d9d9d9 inset'}" />
+          <a-badge v-show="showRed" :count="record.homeRed" :numberStyle="{borderRadius:0, backgroundColor: 'red', color: '#fff', boxShadow: '0 0 0 1px #d9d9d9 inset'}" />
+          {{ home[lang] }}
+        </span>
+        <span slot="guest" slot-scope="guest, record"> 
+          {{ guest[lang] }}
+          <a-badge v-show="showRed" :count="record.guestRed" :numberStyle="{borderRadius:0, backgroundColor: 'red', color: '#fff', boxShadow: '0 0 0 1px #d9d9d9 inset'}" />
+          <a-badge v-show="showYellow" class="ml-1" :count="record.guestYellow" :numberStyle="{borderRadius:0, backgroundColor: 'yellow', color: '#999', boxShadow: '0 0 0 1px #d9d9d9 inset'}" />
+        </span>
         <span slot="score" slot-scope="text, record">{{ record.homeScore }} - {{ record.guestScore }}</span>
         <span slot="halfScore" slot-scope="text, record">{{ record.homeHalfScore }} - {{ record.guestHalfScore }}</span>
       </a-table>
@@ -59,6 +67,8 @@ export default {
       data: [],
       columns,
       lang: 0,
+      showRed: true,
+      showYellow: true,
     }
   },
   mounted() {
