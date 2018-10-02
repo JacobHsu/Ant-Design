@@ -11,7 +11,8 @@
       <h1>{{ msg }}</h1>
     </div>
     <div>
-      <a-table :columns="columns" :dataSource="data" :pagination="false" size="middle">
+      <a-table :columns="columns" :dataSource="data" :pagination="false" size="middle" :loading="loading">
+        <span slot="matchTime" slot-scope="matchTime, record">{{ record.matchDate + " " + matchTime }}</span>
         <span slot="league" slot-scope="league">{{ league[lang] }}</span>
         <span slot="home" slot-scope="home, record">
           <a-badge v-show="showYellow" class="mr-1" :count="record.homeYellow" :numberStyle="{borderRadius:0, backgroundColor: 'yellow', color: '#999', boxShadow: '0 0 0 1px #d9d9d9 inset'}" />
@@ -42,22 +43,27 @@ const columns = [{
     title: '時間',
     dataIndex: 'matchTime',
     scopedSlots: { customRender: 'matchTime' },
+    align: 'center',
 }, {
     title: '主隊',
     dataIndex: 'home',
     scopedSlots: { customRender: 'home' },
+    align: 'center',
 }, {
     title: '全場比分',
     dataIndex: 'score',
     scopedSlots: { customRender: 'score' },
+    align: 'center',
 }, {
     title: '客隊',
     dataIndex: 'guest',
     scopedSlots: { customRender: 'guest' },
+    align: 'center',
 }, {
     title: '半場比分',
     dataIndex: 'halfScore',
     scopedSlots: { customRender: 'halfScore' },
+    align: 'center',
 }];
 
 export default {
@@ -69,6 +75,7 @@ export default {
       lang: 0,
       showRed: true,
       showYellow: true,
+      loading: false,
     }
   },
   mounted() {
