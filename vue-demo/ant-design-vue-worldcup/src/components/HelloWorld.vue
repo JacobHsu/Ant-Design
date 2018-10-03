@@ -26,6 +26,37 @@
         </span>
         <span slot="score" slot-scope="text, record">{{ record.homeScore }} - {{ record.guestScore }}</span>
         <span slot="halfScore" slot-scope="text, record">{{ record.homeHalfScore }} - {{ record.guestHalfScore }}</span>
+        <span slot="operation" slot-scope="text, record">
+            <a-dropdown :trigger="['click']">
+                <a class="ant-dropdown-link">
+                  模擬 <a-icon type="down" />
+                </a>
+                <a-menu slot="overlay">
+                  <a-menu-item key="0">
+                    <a @click="operation('homeScore', record.matchId)">主隊進球 +1</a>
+                  </a-menu-item>
+                  <a-menu-item key="1">
+                    <a @click="operation('homeRed', record.matchId)">主隊紅牌 +1</a>
+                  </a-menu-item>
+                  <a-menu-item key="2">
+                    <a @click="operation('homeYellow', record.matchId)">主隊黃牌 +1</a>
+                  </a-menu-item>
+
+                  <a-menu-divider />
+
+                  <a-menu-item key="3">
+                    <a @click="operation('guestScore', record.matchId)">客隊進球 +1</a>
+                  </a-menu-item>
+                  <a-menu-item key="4">
+                    <a @click="operation('guestRed', record.matchId)">客隊紅牌 +1</a>
+                  </a-menu-item>
+                  <a-menu-item key="5">
+                    <a @click="operation('guestYellow', record.matchId)">客隊黃牌 +1</a>
+                  </a-menu-item>
+                </a-menu>
+            </a-dropdown>
+         </span>
+
       </a-table>
     </div>
   </div>
@@ -64,6 +95,11 @@ const columns = [{
     dataIndex: 'halfScore',
     scopedSlots: { customRender: 'halfScore' },
     align: 'center',
+}, {
+    title: '本地模擬',
+    dataIndex: 'operation',
+    scopedSlots: { customRender: 'operation' },
+    align: 'right',
 }];
 
 export default {
@@ -92,6 +128,42 @@ export default {
             this.loading = false
             this.data = data.results;
         });
+    },
+    operation (type, matchId) {
+      //this.$message.success(matchId, 3);
+
+      let foundIndex = this.data.findIndex(x => x.matchId === matchId)
+      if(foundIndex !== -1) {
+          let currentMatch = this.data[foundIndex];
+
+          let msg = ''
+          switch (type) {
+              case 'homeScore':
+                  currentMatch.homeScore ++
+                  msg = <span><b class="text-danger">{ currentMatch.home[this.lang] } {currentMatch.homeScore}</b> : {currentMatch.guestScore} {currentMatch.guest[this.lang]}</span>;
+                  this.$message.success(msg, 10);
+                  break;
+              case 'homeRed':
+                  currentMatch.homeRed ++
+                  break;
+              case 'homeYellow':
+                  currentMatch.homeYellow ++
+                  break;
+              case 'guestScore':
+                  currentMatch.guestScore ++
+                  msg = <span>{ currentMatch.home[this.lang] } {currentMatch.homeScore} : <b class="text-danger">{currentMatch.guestScore} {currentMatch.guest[this.lang]}</b></span>;
+                  this.$message.success(msg, 10);
+                  break;
+              case 'guestRed':
+                  currentMatch.guestRed ++
+                  break;
+              case 'guestYellow':
+                  currentMatch.guestYellow ++
+                  break;
+          }
+
+
+      }
     },
   },
   props: {
