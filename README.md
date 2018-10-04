@@ -33,6 +33,10 @@ App.vue components\HelloWorld.vue
 
 `$ yarn add reqwest`   
 
+## Deploying
+
+`$ yarn run build`  dist 文件  
+`git subtree push --prefix dist origin gh-pages` 
 
 ### Tools
 
