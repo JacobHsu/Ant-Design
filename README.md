@@ -35,8 +35,13 @@ App.vue components\HelloWorld.vue
 
 ## Deploying
 
-`$ yarn run build`  dist 文件  
+Vue CLI [GitHub Pages](https://cli.vuejs.org/zh/guide/deployment.html#cors)  
+Set correct baseUrl in `vue.config.js`    
+
+`$ yarn run build`  將生成的 dist 文件 移動至根目錄  
 `git subtree push --prefix dist origin gh-pages` 
+
+
 
 ### Tools
 
